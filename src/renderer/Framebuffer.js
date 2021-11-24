@@ -7,7 +7,6 @@ function unbindFramebuffer() {
 }
 
 export function makeFramebuffer(gl, { color, depth }) {
-
   const framebuffer = gl.createFramebuffer();
   
   const thisFramebuffer = {gl, framebuffer};
