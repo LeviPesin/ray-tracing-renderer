@@ -18,7 +18,7 @@ RayTracingRenderer is the *early alpha stage* of development. Features are incom
 Or if you use npm, run
 `npm install ray-tracing-renderer`
 
-Ray Tracing Renderer relies on WebGL2, and any browser supporting WebGL2 also supports ES6. Thus, you should only use the ES5 build if the renderer inside your appliaction is *optional*, and your application must support older browsers.
+Ray Tracing Renderer relies on WebGL2, and any browser supporting WebGL2 also supports ES6. Thus, you should only use the ES5 build if the renderer inside your application is *optional*, and your application must support older browsers.
 
 ### Installation
 #### As an HTML script
