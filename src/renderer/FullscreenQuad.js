@@ -1,6 +1,11 @@
 import vertex from './glsl/fullscreenQuad.vert';
 import { makeVertexShader } from './RenderPass';
 
+function drawToQuad() {
+  this.gl.bindVertexArray(this.vao);
+  this.gl.drawArrays(this.gl.TRIANGLES, 0, 6);
+}
+
 export function makeFullscreenQuad(gl) {
   const vao = gl.createVertexArray();
 
@@ -19,13 +24,8 @@ export function makeFullscreenQuad(gl) {
 
   const vertexShader = makeVertexShader(gl, { vertex });
 
-  function draw() {
-    gl.bindVertexArray(vao);
-    gl.drawArrays(gl.TRIANGLES, 0, 6);
-  }
-
   return {
-    draw,
+    drawToQuad.bind({ gl, vao }),
     vertexShader
   };
 }
