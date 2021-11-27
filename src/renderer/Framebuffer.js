@@ -1,5 +1,5 @@
 function bindFramebuffer() {
-  this.gl.bindFramebuffer(gl.FRAMEBUFFER, this.framebuffer);
+  this.gl.bindFramebuffer(this.gl.FRAMEBUFFER, this.framebuffer);
 }
 
 function unbindFramebuffer() {
