@@ -63,7 +63,7 @@ class RenderingPipeline {
     const noiseImage = new Image();
     noiseImage.src = noiseBase64;
     noiseImage.onload = () => {
-      rayTracePass.setNoise(noiseImage);
+      this.rayTracePass.setNoise(noiseImage);
       this.ready = true;
     };
 
@@ -87,7 +87,7 @@ class RenderingPipeline {
 
     this.fullscreenScale = new Vector2(1, 1);
 
-    this.lastToneMappedScale = fullscreenScale;
+    this.lastToneMappedScale = this.fullscreenScale;
 
     this.hdrBuffer = null;
     this.hdrBackBuffer = null;
