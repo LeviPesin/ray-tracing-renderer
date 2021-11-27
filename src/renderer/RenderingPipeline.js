@@ -52,7 +52,7 @@ class RenderingPipeline {
 
     this.rayTracePass = makeRayTracePass(gl, { bounces, decomposedScene, fullscreenQuad, materialBuffer, mergedMesh, optionalExtensions, scene });
 
-    this.reprojectPass = makeReprojectPass(gl, { fullscreenQuad, this.maxReprojectedSamples });
+    this.reprojectPass = makeReprojectPass(gl, { fullscreenQuad, maxReprojectedSamples: this.maxReprojectedSamples });
 
     this.toneMapPass = makeToneMapPass(gl, { fullscreenQuad, toneMappingParams });
 
