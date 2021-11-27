@@ -25,7 +25,7 @@ export function makeFullscreenQuad(gl) {
   const vertexShader = makeVertexShader(gl, { vertex });
 
   return {
-    drawToQuad.bind({ gl, vao }),
+    draw: drawToQuad.bind({ gl, vao }),
     vertexShader
   };
 }
