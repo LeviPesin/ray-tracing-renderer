@@ -6,6 +6,10 @@ const glRequiredExtensions = [
   'EXT_color_buffer_float', // enables rendering to float buffers
 ];
 
+const glOptionalExtensions = [
+  'OES_texture_float_linear', // enables gl.LINEAR texture filtering for float textures,
+];
+
 export function RayTracingRenderer(params = {}) {
   const canvas = params.canvas || document.createElement('canvas');
 
@@ -19,6 +23,7 @@ export function RayTracingRenderer(params = {}) {
   });
 
   loadExtensions(gl, glRequiredExtensions);
+  const optionalExtensions = loadExtensions(gl, glOptionalExtensions);
 
   let pipeline = null;
   const size = new THREE.Vector2();
@@ -47,7 +52,7 @@ export function RayTracingRenderer(params = {}) {
 
     const bounces = module.bounces;
 
-    pipeline = makeRenderingPipeline({gl, optionalExtensions: true, scene, toneMappingParams, bounces});
+    pipeline = makeRenderingPipeline({gl, optionalExtensions, scene, toneMappingParams, bounces});
 
     pipeline.onSampleRendered = (...args) => {
       if (module.onSampleRendered) {
