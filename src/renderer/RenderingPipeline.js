@@ -21,7 +21,7 @@ function areCamerasEqual(cam1, cam2) {
 }
 
 class RenderingPipeline {
-  constructor(gl, scene, toneMappingParams, bounces) {
+  constructor(gl, scene, toneMappingParams, optionalExtensions, bounces) {
     this.gl = gl;
     
     this.maxReprojectedSamples = 20;
@@ -50,7 +50,7 @@ class RenderingPipeline {
 
     const fullscreenQuad = makeFullscreenQuad(gl);
 
-    this.rayTracePass = makeRayTracePass(gl, { bounces, decomposedScene, fullscreenQuad, materialBuffer, mergedMesh, optionalExtensions: true, scene });
+    this.rayTracePass = makeRayTracePass(gl, { bounces, decomposedScene, fullscreenQuad, materialBuffer, mergedMesh, optionalExtensions, scene });
 
     this.reprojectPass = makeReprojectPass(gl, { fullscreenQuad, maxReprojectedSamples });
 
@@ -423,10 +423,11 @@ export function makeRenderingPipeline({
     gl,
     scene,
     toneMappingParams,
+    optionalExtensions,
     bounces, // number of global illumination bounces
   }) {
   
-  const renderingPipeline = new RenderingPipeline(gl, scene, toneMappingParams, bounces);
+  const renderingPipeline = new RenderingPipeline(gl, scene, toneMappingParams, optionalExtensions, bounces);
 
   return {
     draw: renderingPipeline.draw.bind(renderingPipeline),
